@@ -330,42 +330,41 @@ const Catalog = ({ id, onNavigate, addToCartGlobal, selectedCategory, cartCount 
     <Panel id={id}>
       <PanelHeader
         before={
-          <div onClick={goHome} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 24 }}>🖥️</span>
-            <span style={{ fontWeight: 'bold', fontSize: 20, color: '#FF6600' }}>PC-Market</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div onClick={goHome} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 24 }}>🖥️</span>
+              <span style={{ fontWeight: 'bold', fontSize: 20, color: '#FF6600' }}>PC-Market</span>
+            </div>
+            
+            {/* Корзина теперь слева рядом с названием */}
+            <div onClick={goToCart} style={{ cursor: 'pointer', position: 'relative', padding: '4px 8px' }}>
+              <span style={{ fontSize: 20 }}>🛒</span>
+              {cartCount > 0 && (
+                <span style={{ 
+                  position: 'absolute', 
+                  top: -5, 
+                  right: -5, 
+                  background: '#FF6600', 
+                  color: 'white',
+                  borderRadius: '10px',
+                  padding: '2px 6px',
+                  fontSize: 11,
+                  fontWeight: 'bold',
+                  minWidth: '18px',
+                  textAlign: 'center'
+                }}>
+                  {cartCount}
+                </span>
+              )}
+            </div>
           </div>
         }
         style={{ 
           background: '#FFFFFF', 
-          borderBottom: '2px solid #FF6600',
-          position: 'relative'
+          borderBottom: '2px solid #FF6600'
         }}
       >
         Каталог
-        <div 
-          onClick={goToCart} 
-          style={{ 
-            position: 'absolute',
-            right: '16px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '4px',
-            padding: '8px 12px',
-            background: cartCount > 0 ? '#FF6600' : '#f5f5f5',
-            borderRadius: '20px',
-            zIndex: 10
-          }}
-        >
-          <span style={{ fontSize: 20 }}>🛒</span>
-          {cartCount > 0 && (
-            <span style={{ fontWeight: 'bold', color: 'white', fontSize: 14 }}>
-              {cartCount}
-            </span>
-          )}
-        </div>
       </PanelHeader>
 
       <Group>

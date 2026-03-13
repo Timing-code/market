@@ -9,7 +9,7 @@ const Home = ({ id, onNavigate, previousPage, cartCount = 0 }) => {
       category: 'Видеокарты',
       price: 189990, 
       oldPrice: 199990,
-      image: 'https://via.placeholder.com/150/FF6600/FFFFFF?text=RTX+4090',
+      image: 'https://placehold.co/150x150/FF6600/FFFFFF?text=RTX+4090',
       rating: 4.9,
       reviews: 127,
       badge: 'ХИТ',
@@ -21,7 +21,7 @@ const Home = ({ id, onNavigate, previousPage, cartCount = 0 }) => {
       name: 'Intel Core i9-13900K', 
       category: 'Процессоры',
       price: 64990, 
-      image: 'https://via.placeholder.com/150/FF6600/FFFFFF?text=i9-13900K',
+      image: 'https://placehold.co/150x150/FF6600/FFFFFF?text=i9-13900K',
       rating: 4.8,
       reviews: 89,
       badge: 'NEW',
@@ -34,7 +34,7 @@ const Home = ({ id, onNavigate, previousPage, cartCount = 0 }) => {
       category: 'Оперативная память',
       price: 12990, 
       oldPrice: 14990,
-      image: 'https://via.placeholder.com/150/FF6600/FFFFFF?text=RAM+32GB',
+      image: 'https://placehold.co/150x150/FF6600/FFFFFF?text=RAM+32GB',
       rating: 4.7,
       reviews: 234,
       badge: '-13%',
@@ -46,7 +46,7 @@ const Home = ({ id, onNavigate, previousPage, cartCount = 0 }) => {
       name: 'Samsung 990 PRO 2TB', 
       category: 'SSD накопители',
       price: 18990, 
-      image: 'https://via.placeholder.com/150/FF6600/FFFFFF?text=SSD+2TB',
+      image: 'https://placehold.co/150x150/FF6600/FFFFFF?text=SSD+2TB',
       rating: 4.9,
       reviews: 312,
       badge: 'ТОП',
@@ -103,39 +103,9 @@ const Home = ({ id, onNavigate, previousPage, cartCount = 0 }) => {
         }
         style={{ 
           background: '#FFFFFF', 
-          borderBottom: '2px solid #FF6600',
-          position: 'relative'
+          borderBottom: '2px solid #FF6600'
         }}
       >
-        {/* Кнопка корзины */}
-        <div 
-          onClick={goToCart} 
-          style={{ 
-            position: 'absolute',
-            right: '16px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '4px',
-            padding: '8px 12px',
-            background: cartCount > 0 ? '#FF6600' : '#f5f5f5',
-            borderRadius: '20px',
-            zIndex: 10
-          }}
-        >
-          <span style={{ fontSize: 20 }}>🛒</span>
-          {cartCount > 0 && (
-            <span style={{ 
-              fontWeight: 'bold', 
-              color: 'white',
-              fontSize: 14
-            }}>
-              {cartCount}
-            </span>
-          )}
-        </div>
       </PanelHeader>
 
       {/* Баннер в стиле DNS */}
@@ -150,6 +120,35 @@ const Home = ({ id, onNavigate, previousPage, cartCount = 0 }) => {
         <Text style={{ fontSize: 14, opacity: 0.95 }}>На видеокарты и процессоры до конца месяца!</Text>
         <Button mode="primary" size="m" style={{ marginTop: 16, background: 'white', color: '#FF6600', fontWeight: 'bold', borderRadius: '8px' }} onClick={() => onNavigate && onNavigate('catalog')}>
           СМОТРЕТЬ АКЦИИ →
+        </Button>
+      </Div>
+
+      {/* КНОПКА КОРЗИНЫ ТЕПЕРЬ ЗДЕСЬ - НИЖЕ БАННЕРА */}
+      <Div style={{ 
+        padding: '16px', 
+        background: '#FFFFFF',
+        borderBottom: '1px solid #e0e0e0'
+      }}>
+        <Button 
+          mode="primary" 
+          stretched 
+          onClick={goToCart}
+          style={{ 
+            background: cartCount > 0 ? '#FF6600' : '#f5f5f5',
+            borderRadius: '8px',
+            padding: '16px',
+            fontWeight: 'bold',
+            fontSize: 16,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}
+        >
+          <span style={{ fontSize: 24 }}>🛒</span>
+          <span>
+            {cartCount > 0 ? `Корзина (${cartCount} товаров)` : 'Корзина пуста'}
+          </span>
         </Button>
       </Div>
 
